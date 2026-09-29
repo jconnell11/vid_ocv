@@ -1,7 +1,13 @@
 # vid_ocv
 ## Background Framegrabbing with Rectification
 
-This C++ library performs framegrabbing from a camera (or web stream) in a background thread to keep the main process from being slowed down. It works with Windows ([.dll](../project/vid_ocv.dll)) or Linux ([.so](../project/bin/ARM64/Release/libvid_ocv.so)) and there are Python bindings if desired. When capturing images it can automatically de-warp them using intrinsic parameters as well as de-rotate them (an extrinsic parameter). In addition, there are some simple display functions with image save and video save options. This project was originally developed for the [Baijiu](https://github.com/jconnell11/Baijiu) robot and is used by the test programs for the [dude_trk](https://github.com/jconnell11/dude_trk) person tracker and [rng_flr](https://github.com/jconnell11/rng_flr) depth map generator. Note that it requires the opencv_world4100 library, but the machine itself does not have to have OpenCV installed. 
+This C++ library performs framegrabbing from a camera (or web stream) in a background thread to keep the main process from being slowed down. It works with Windows ([.dll](../project/vid_ocv.dll)) or Linux ([.so](../project/bin/ARM64/Release/libvid_ocv.so)) and there are Python bindings if desired. When capturing images it can automatically de-warp them using intrinsic parameters as well as de-rotate them (an extrinsic parameter). 
+
+| original curvy | straightened |
+| --- | --- |
+| ![Curvy](curvy.jpg) | ![Straight](straight.jpg) |
+
+In addition, there are some simple display functions with image save and video save options. This project was originally developed for the [Baijiu](https://github.com/jconnell11/Baijiu) robot and is used by the test programs for the [dude_trk](https://github.com/jconnell11/dude_trk) person tracker and [rng_flr](https://github.com/jconnell11/rng_flr) depth map generator. Note that it requires the opencv_world4100 library, but the machine itself does not have to have OpenCV installed. 
 
 ---
 
