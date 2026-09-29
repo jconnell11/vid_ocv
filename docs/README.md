@@ -44,4 +44,9 @@ To display an image you basically make a window with __ocv_win__, send the curre
 
 There are several options for saving program output. One is the "mark" argument of ocv_queue. If this is set to a positive number then it will immediately save that image out as a BMP bitmap file. Alternatively, you can capture the whole run of a program by setting the "rec" argument of ocv_win to 1. This records an MP4 video of what was displayed on that window. You can find any images or videos that were produced in subdirectory "rec" (which must already exist before running your program).
 
+### Compiling
+
+If for some reason you want to recompile this library, the project files for [Visual C++ 2022](https://aka.ms/vs/17/release/vs_community.exe) Community (free) are included. Use vid_ocv.sln for Windows, or vid_ocv_ix.sln for Linux. The Linux version assumes you can connect to some remote machine with G++ and OpenCV 4.10 installed to do the compiling. The test program has similar solution files: vid_test.sln and vid_test_ix.sln.
+
+
 October 2026 - Jonathan Connell - jconnell@alum.mit.edu
