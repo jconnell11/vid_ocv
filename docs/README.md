@@ -1,7 +1,7 @@
 # vid_ocv
 ## Background Framegrabbing with Rectification
 
-This C++ library performs framegrabbing from a camera (or web stream) in a background thread to keep the main process from being slowed down. It works with Windows ([.dll](../project/vid_ocv.dll)) or Linux ([.so](../project/bin/ARM64/Release/libvid_ocv.so)) and there are Python bindings if desired. When capturing images it can automatically de-warp them using intrinsic parameters as well as de-rotate them (an extrinsic parameter). 
+This C++ library performs framegrabbing from a camera (or web stream) in a background thread to keep the main process from being slowed down. It works with Windows ([.dll](../project/vid_ocv.dll)) or Linux ([.so](../project/libvid_ocv.so)) and there are Python bindings if desired. When capturing images it can automatically de-warp them using intrinsic parameters as well as de-rotate them (an extrinsic parameter). 
 
 | original curvy | straightened |
 | --- | --- |
@@ -13,11 +13,11 @@ In addition, there are some simple display functions with image save and video s
 
 ### Test Program
 
-First, copy all these files to some local directory then open a command prompt and "cd" to the directory. The [vid_test](../project/vid_test.exe) executable defaults to capturing from the web stream camera on the Baijiu robot. To instead grab from a local camera, supply the additional argument "0". That is, on a Windows Terminal do the following:
+First, copy the [vid_test.exe](../project/vid_test.exe) executable to some local directory, as well as [opencv_world4100.dll](https://github.com/jconnell11/Baijiu/blob/main/project/DLL/opencv_world4100.dll) if OpenCV is not installed. Then open a a Windows Terminal, "cd" to the directory, and enter the command below. The program normally defaults to capturing from the streaming web camera on the Baijiu robot. To instead grab from a local camera, supply the additional argument "0".
 
     vid_test 0
 
-Equivalently, for Linux copy the [executable](../project/bin/ARM64/Release/vid_test) to the main directory then, at the command prompt, do:
+Equivalently, for Linux copy the [executable](../project/vid_test) to the main directory, make sure OpenCV 4.10 is installed, then at the command prompt type:
 
     ./vid_test 0
 
@@ -25,7 +25,7 @@ This should pop up a window showing you a live camera view. Note that, when usin
 
 ### Framegrabbing
 
-The [header file](../project/vid_ocv.h) documents the various functions available. Start by specifying the source with __ocv_open__ or __ocv_cam__, then get a pointer to a frame buffer with __ocv_get__. The framebuffer is a collection of unsigned 8 bit integers in BGR color order scanned left-to-right but _bottom-up_. This is the Windows standard (where this library is mostly used) as opposed to the OpenCV convention of top-down. Note that ocv_get has an option of flipping the image upside down for direct use with OpenCV. Generally, you can turn the buffer into a normal Mat using code like this (perhaps followed by a call to cv::flip):
+The [header](../project/vid_ocv.h) file documents the various functions available. Start by specifying the source with __ocv_open__ or __ocv_cam__, then get a pointer to a frame buffer with __ocv_get__. The framebuffer is a collection of unsigned 8 bit integers in BGR color order scanned left-to-right but _bottom-up_. This is the Windows standard (where this library is mostly used) as opposed to the OpenCV convention of top-down. Note that ocv_get has an option of flipping the image upside down for direct use with OpenCV. Generally, you can turn the buffer into a normal Mat using code like this (perhaps followed by a call to cv::flip):
 
     img = cv::Mat(480, 640, CV_8UC3, (void *) buf);
 
@@ -52,7 +52,7 @@ There are several options for saving program output. One is the "mark" argument 
 
 ### Compiling
 
-If for some reason you want to recompile this library, the project files for [Visual C++ 2022](https://aka.ms/vs/17/release/vs_community.exe) Community (free) are included. Use vid_ocv.sln for Windows, or vid_ocv_ix.sln for Linux. The Linux version assumes you can connect to some remote machine with G++ and OpenCV 4.10 installed to do the compiling. The test program has similar solution files: vid_test.sln and vid_test_ix.sln.
+If for some reason you want to recompile this library, the project files for [Visual C++ 2022](https://aka.ms/vs/17/release/vs_community.exe) Community (free) are included. Use vid_ocv.sln for Windows, or vid_ocv_ix.sln for Linux. The Linux version assumes you can connect to some remote machine with GCC and OpenCV 4.10 installed to do the compiling. The test program has similar solution files: vid_test.sln and vid_test_ix.sln.
 
 
 October 2026 - Jonathan Connell - jconnell@alum.mit.edu
