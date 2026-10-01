@@ -35,9 +35,9 @@ However, this is _not necessary_ when using the provided display function (it ex
 
 The __ocv_warp__ function takes standard OpenCV radial distortion parameters. In addition you can supply an angle (in degrees) to rotate the image. Finally, there is an overall magnification factor. Setting this less than one (e.g. 0.8) shows you more detail in the corners but results in bigger blank regions (black). Note that the effective focal length of a image with some magnification is _mag * f_ for subsequent realworld geometric calculations.
 
-You can obtain the warping coefficients for your camera by the normal OpenCV method of showing it a checkboard pattern at various positions. I download this 9x6 [pattern](checker_9x6.pdf) and display it fullscreen on my old IPad Air. Generally, you need to take a ruler and measure the size of a square on whatever device (or printout) you are using, then enter it at the top of the [wifi_corners](../project/scripts/wifi_corners.py) script file. 
+You can obtain the warping coefficients for your camera by the normal OpenCV method of showing it a checkboard pattern at various positions. I download this 9x6 [pattern](checker_9x6.pdf) and display it fullscreen on my old IPad Air. Generally, you need to take a ruler and measure the size of a square on whatever device (or printout) you are using, then enter it at the top of the [wifi_corners](../project/intrinsic/wifi_corners.py) script file. 
 
-Next, make a subdirectory "images" and run [wifi-images](../project/scripts/wifi_images.py) to collect 10-20 sample images. Move the pattern around so it alternately covers the whole image and each of the corners. All the intersections one level in need to be visible (the outer border can be clipped). Hit the "S" key to save each image.
+Next, make a subdirectory "images" and run [wifi-images](../project/intrinsic/wifi_images.py) to collect 10-20 sample images. Move the pattern around so it alternately covers the whole image and each of the corners. All the intersections one level in need to be visible (the outer border can be clipped). Hit the "S" key to save each image.
 
     py wifi_images.py
     py wifi_corners.py
